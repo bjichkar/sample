@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="brj.autosmsdemo" >
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ringcaptcha sdk activities|receivers -->
+        <activity
+            android:name="com.thrivecom.ringcaptcha.SetNumberActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize"
+            android:windowSoftInputMode="stateVisible|adjustPan|adjustResize"
+            android:screenOrientation="sensor">
+        </activity>
+
+        <activity
+            android:name="com.thrivecom.ringcaptcha.HelpActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="sensor">
+        </activity>
+        <activity
+            android:name="com.thrivecom.ringcaptcha.VerifyActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="sensor">
+        </activity>
+        <activity
+            android:name="com.thrivecom.ringcaptcha.CountryListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="sensor">
+        </activity>
+
+        <activity
+            android:name="com.thrivecom.ringcaptcha.OnboardActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="sensor">
+        </activity>
+
+        <activity
+            android:name="com.thrivecom.ringcaptcha.CodeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="sensor"
+            android:windowSoftInputMode="stateVisible|adjustPan|adjustResize">
+        </activity>
+
+        <receiver
+            android:name="com.thrivecom.ringcaptcha.RingcaptchaAPIController"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter android:priority="999">
+                <action
+                    android:name="android.provider.Telephony.SMS_RECEIVED"
+                    android:scheme="sms" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
